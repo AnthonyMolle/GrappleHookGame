@@ -10,6 +10,7 @@ public class stagegeneration : MonoBehaviour
     [SerializeField] GameObject[] blockPrefabs;
     [SerializeField] Color stageColor;
     public float stageOffset;
+    public float generationOffset;
     public GameObject player;
 
     private GameObject[] blocks;
@@ -25,7 +26,7 @@ public class stagegeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.y >= blocks[1].transform.position.y) {
+        if (player.transform.position.y >= blocks[1].transform.position.y - generationOffset) {
             Destroy(blocks[0]);
             blocks[0] = blocks[1];
             blocks[1] = null;
