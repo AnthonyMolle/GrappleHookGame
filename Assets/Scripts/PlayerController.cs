@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject grapplePoint;
     [SerializeField] GameObject indicator;
 
+    [SerializeField] Tilemap tile;
+
     [SerializeField] GameObject grapplePrefab;
 
     [SerializeField] Camera cam;
-    
-
     [SerializeField] float verticalPlayerSpeed;
     [SerializeField] float grappleSpeed = 1;
     [SerializeField] float reelSpeed = 100;
