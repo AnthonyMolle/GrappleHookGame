@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject grapplePoint;
     [SerializeField] GameObject indicator;
 
-    [SerializeField] Tilemap tile;
-
     [SerializeField] GameObject grapplePrefab;
 
     [SerializeField] Camera cam;
@@ -20,9 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float grappleSpeed = 1;
     [SerializeField] float reelSpeed = 100;
     [SerializeField] float distanceCutoff = 1;
+    [SerializeField] float playerGravity;
+    [SerializeField] float grappleDamping = 1;
+    [SerializeField] float grappleFrequency = 1000000;
 
-    private bool leftHeld = false;
-    private bool rightHeld = false;
     private bool fireHeld = false;
     private bool firingHook = false;
     private bool grappleReady = true;
@@ -58,16 +57,24 @@ public class PlayerController : MonoBehaviour
              Debug.Log("return");
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             fireHeld = true;
             firingHook = true;
         }
-        else
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            fireHeld = false;
+            firingHook = false;
+        }
+        
+        if (fireHeld == false)
         {
             if (grappling)
             {
                 grappling = false;
+                firingHook = false;
                 GrappleRelease();
             }
             fireHeld = false;
@@ -84,25 +91,6 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        // //handling input for left movement
-        // if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        // {
-        //     leftHeld = true;
-        // }
-        // else
-        // {
-        //     leftHeld = false;
-        // }
-
-        // //handling input for left movement
-        // if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        // {
-        //     rightHeld = true;
-        // }
-        // else
-        // {
-        //     rightHeld = false;
-        // }
     }
 
     private void FixedUpdate() 
@@ -126,24 +114,39 @@ public class PlayerController : MonoBehaviour
 
     public void GrappleHit(Transform hitPoint)
     {
-        grappling = true;
+        if (!grappling)
+        {
+            grappling = true;
 
-        currentSpring = gameObject.AddComponent<SpringJoint2D>();
-        currentSpring.dampingRatio = 1;
-        currentSpring.frequency = 1000000;
+            currentSpring = gameObject.AddComponent<SpringJoint2D>();
+            currentSpring.dampingRatio = grappleDamping;
+            currentSpring.frequency = grappleFrequency;
 
-        currentGrapplePoint = Instantiate(grapplePrefab, hitPoint.position, Quaternion.identity);
-        currentSpring.connectedBody = currentGrapplePoint.GetComponent<Rigidbody2D>();
+            currentGrapplePoint = Instantiate(grapplePrefab, hitPoint.position, Quaternion.identity);
+            currentSpring.connectedBody = currentGrapplePoint.GetComponent<Rigidbody2D>();
 
-        grapplePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        rb.velocity = new Vector2(0, 0);
-        rb.gravityScale = 0;
-        // rb.AddForce(grappleDirection.normalized * reelSpeed);
+            grapplePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            rb.velocity = new Vector2(0, 0);
+            rb.gravityScale = 0;
+            // rb.AddForce(grappleDirection.normalized * reelSpeed);
+        }
     }
+
+    // private void OnCollisionEnter2D(Collision2D other) 
+    // {
+    //     if (grappling && other.gameObject.layer == LayerMask.NameToLayer("Level"))
+    //     {
+    //         //rb.velocity = new Vector2(0, 0);
+    //         grappling = false;
+    //         firingHook = false;
+    //         GrappleRelease();
+    //     }    
+    // }
 
     public void GrappleRelease()
     {
-        rb.gravityScale = 2;
+        rb.gravityScale = playerGravity;
+
         Destroy(currentSpring);
         Destroy(currentGrapplePoint);
     }
