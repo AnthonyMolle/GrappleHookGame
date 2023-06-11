@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LineRenderer grappleLine;
     [SerializeField] GameObject grapplePoint;
     [SerializeField] GameObject indicator;
+
+    [SerializeField] GameObject cameraConfiner;
+    [SerializeField] TextMeshProUGUI heightText;
 
     [SerializeField] GameObject grapplePrefab;
 
@@ -21,6 +24,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerGravity;
     [SerializeField] float grappleDamping = 1;
     [SerializeField] float grappleFrequency = 1000000;
+
+    private float currentY;
+    private float greatestY;
+    private float heightCounter;
 
     private bool fireHeld = false;
     private bool firingHook = false;
@@ -37,10 +44,25 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
         grappleLine.positionCount = 2;
+
+        greatestY = gameObject.transform.position.y;
+        currentY = greatestY;
+        heightCounter = 0;
     }
 
     private void Update() 
     {
+        currentY = gameObject.transform.position.y;
+
+        if (currentY > greatestY)
+        {
+            cameraConfiner.transform.position = new Vector2(cameraConfiner.transform.position.x, cameraConfiner.transform.position.y + (currentY - greatestY));
+            heightCounter += currentY - greatestY;
+            greatestY = currentY;
+        }
+
+        heightText.text = heightCounter.ToString("F3") + "m";
+
         grappleLine.SetPosition(0, transform.position);
         grappleLine.SetPosition(1, grapplePoint.transform.position);
 
