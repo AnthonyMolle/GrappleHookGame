@@ -5,25 +5,37 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] AudioSource reelSFX;
+
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Collider2D playerCollider;
 
     [SerializeField] LineRenderer grappleLine;
     [SerializeField] GameObject grapplePoint;
     [SerializeField] GameObject indicator;
+    
 
     [SerializeField] GameObject cameraConfiner;
     [SerializeField] TextMeshProUGUI heightText;
 
     [SerializeField] GameObject grapplePrefab;
 
+    [SerializeField] PhysicsMaterial2D grapplingMaterial;
+    [SerializeField] PhysicsMaterial2D releasedMaterial;
+
     [SerializeField] Camera cam;
-    [SerializeField] float verticalPlayerSpeed;
+    [SerializeField] float grappleRange = 100;
+    [SerializeField] float grappleReturnSpeed = 8;
     [SerializeField] float grappleSpeed = 1;
     [SerializeField] float reelSpeed = 100;
+    [SerializeField] float reelSpeedGrowth = 0.1f;
+    [SerializeField] float maxReelSpeed;
+    private float currentReelSpeed;
     [SerializeField] float distanceCutoff = 1;
     [SerializeField] float playerGravity;
     [SerializeField] float grappleDamping = 1;
     [SerializeField] float grappleFrequency = 1000000;
+    [SerializeField] float grappleDistance;
 
     private float currentY;
     private float greatestY;
@@ -106,11 +118,30 @@ public class PlayerController : MonoBehaviour
 
         if (grappling)
         {
+            if (rb.sharedMaterial != grapplingMaterial || playerCollider.sharedMaterial != grapplingMaterial)
+            {
+                rb.sharedMaterial = grapplingMaterial;
+                playerCollider.sharedMaterial = grapplingMaterial;
+            }
+
             if (currentSpring.distance > distanceCutoff)
             {
-                currentSpring.distance -= reelSpeed * Time.deltaTime;
+                if (currentReelSpeed < maxReelSpeed)
+                {
+                    currentReelSpeed += reelSpeedGrowth;
+                }
+                currentSpring.distance -= currentReelSpeed * Time.deltaTime;
             }
             
+        }
+        else
+        {
+            currentReelSpeed = reelSpeed;
+            if (rb.sharedMaterial != releasedMaterial || playerCollider.sharedMaterial != releasedMaterial)
+            {
+                rb.sharedMaterial = releasedMaterial;
+                playerCollider.sharedMaterial = releasedMaterial;
+            }
         }
 
     }
@@ -143,13 +174,16 @@ public class PlayerController : MonoBehaviour
             currentSpring = gameObject.AddComponent<SpringJoint2D>();
             currentSpring.dampingRatio = grappleDamping;
             currentSpring.frequency = grappleFrequency;
+            
 
             currentGrapplePoint = Instantiate(grapplePrefab, hitPoint.position, Quaternion.identity);
             currentSpring.connectedBody = currentGrapplePoint.GetComponent<Rigidbody2D>();
+            //currentSpring.distance = grappleDistance;
 
             grapplePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             rb.velocity = new Vector2(0, 0);
             rb.gravityScale = 0;
+            reelSFX.Play();
             // rb.AddForce(grappleDirection.normalized * reelSpeed);
         }
     }
@@ -171,5 +205,6 @@ public class PlayerController : MonoBehaviour
 
         Destroy(currentSpring);
         Destroy(currentGrapplePoint);
+        reelSFX.Stop();
     }
 }
