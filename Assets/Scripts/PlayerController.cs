@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] float grappleRange = 100;
     [SerializeField] float grappleReturnSpeed = 8;
+    [SerializeField] float returnEpsilon = 1;
     [SerializeField] float grappleSpeed = 1;
     [SerializeField] float reelSpeed = 100;
     [SerializeField] float reelSpeedGrowth = 0.1f;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private bool firingHook = false;
     private bool grappleReady = true;
     private bool grappling = false;
+    private bool returning = false;
 
     private Vector2 mousePosition;
     private Vector2 mouseDirection;
@@ -87,8 +89,21 @@ public class PlayerController : MonoBehaviour
 
         if (firingHook == false)
         {
-             grapplePoint.transform.position = gameObject.transform.position;
-             Debug.Log("return");
+            if (returning)
+            {
+                if((gameObject.transform.position - grapplePoint.transform.position).magnitude < returnEpsilon)
+                {
+                    returning = false;
+                }
+                else
+                {
+                    grapplePoint.transform.position = Vector3.MoveTowards(grapplePoint.transform.position, gameObject.transform.position, grappleReturnSpeed);
+                }
+            }
+            else
+            {
+                grapplePoint.transform.position = gameObject.transform.position;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -99,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            GrappleRelease();
             fireHeld = false;
             firingHook = false;
         }
@@ -202,9 +218,14 @@ public class PlayerController : MonoBehaviour
     public void GrappleRelease()
     {
         rb.gravityScale = playerGravity;
+        firingHook = false;
+        returning = true;
 
-        Destroy(currentSpring);
-        Destroy(currentGrapplePoint);
-        reelSFX.Stop();
+        if (currentSpring != null)
+        {
+            Destroy(currentSpring);
+            Destroy(currentGrapplePoint);
+            reelSFX.Stop();
+        }
     }
 }

@@ -563,6 +563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1093553467}
     - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: reelSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
       propertyPath: heightText
       value: 
       objectReference: {fileID: 134468763}
@@ -575,9 +579,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2061831283}
     - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: maxReelSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
       propertyPath: cameraConfiner
       value: 
       objectReference: {fileID: 1966022775}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: distanceCutoff
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: reelSpeedGrowth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: grappleReturnSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7266420539619128979, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
       propertyPath: m_RootOrder
       value: 1
