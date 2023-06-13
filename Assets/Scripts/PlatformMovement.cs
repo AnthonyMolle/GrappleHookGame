@@ -17,7 +17,6 @@ public class PlatformMovement : MonoBehaviour
     {
         isMoving = true;
         StartCoroutine(MyCoroutine());
-        Debug.Log("starting coroutine");
     }
 
     // Update is called once per frame
@@ -32,7 +31,7 @@ public class PlatformMovement : MonoBehaviour
     IEnumerator MyCoroutine(){
         
             
-        Debug.Log("coroutine running");    
+            
         while(isMoving&&speed<maxSpeed){    
             yield return new WaitForSeconds(speedInterval);
             Debug.Log("changing speed" + speed);
