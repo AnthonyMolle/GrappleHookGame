@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     
 
     [SerializeField] GameObject cameraConfiner;
+    [SerializeField] GameObject spikePlatform;
+    [SerializeField] TextMeshProUGUI spikeDistanceText;
     [SerializeField] TextMeshProUGUI heightText;
 
     [SerializeField] GameObject bgParticles;
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private SpringJoint2D currentSpring;
     private Collider2D grapplePointCollider;
 
+
     private void Start() 
     {
         grappleLine.positionCount = 2;
@@ -80,7 +83,8 @@ public class PlayerController : MonoBehaviour
             greatestY = currentY;
         }
 
-        heightText.text = heightCounter.ToString("F3") + "m";
+        heightText.text = (heightCounter * 3).ToString("F0");
+        spikeDistanceText.text = (Vector2.Distance(gameObject.transform.position, spikePlatform.transform.position)).ToString("F2") + "m";
 
         grappleLine.SetPosition(0, transform.position);
         grappleLine.SetPosition(1, grapplePoint.transform.position);

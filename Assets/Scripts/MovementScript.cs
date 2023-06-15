@@ -14,6 +14,7 @@ public class MovementScript : MonoBehaviour
     public bool goingLeft = false;
 
     private bool hooked = false;
+    public bool paused = false;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!hooked)
+        if (!hooked && !paused)
         {
             if(goingRight){
                 transform.position = Vector3.MoveTowards(transform.position, point1.transform.position, moveSpeed *Time.deltaTime);
