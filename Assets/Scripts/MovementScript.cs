@@ -12,6 +12,9 @@ public class MovementScript : MonoBehaviour
     //public bool initialload = true;
     public bool goingRight = true;
     public bool goingLeft = false;
+
+    private bool hooked = false;
+
     void Start()
     {
         Vector3 distance = new Vector3(Mathf.Abs(point1.transform.position.x - point2.transform.position.x),Mathf.Abs(point1.transform.position.y - point2.transform.position.y),0.0f);
@@ -29,24 +32,52 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(goingRight){
-            transform.position = Vector3.MoveTowards(transform.position, point1.transform.position, moveSpeed *Time.deltaTime);
-            
+        if (!hooked)
+        {
+            if(goingRight){
+                transform.position = Vector3.MoveTowards(transform.position, point1.transform.position, moveSpeed *Time.deltaTime);
+                
+            }
+            if(goingLeft){
+                transform.position = Vector3.MoveTowards(transform.position, point2.transform.position, moveSpeed *Time.deltaTime);
+            }
+            if(transform.position.x >= point1.transform.position.x-.1){
+                Debug.Log("hit right");
+                goingLeft = true;
+                goingRight = false;
+            }
+            if(transform.position.x <= point2.transform.position.x+.1){
+                Debug.Log("hit left");
+                goingRight = true;
+                goingLeft = false;
+            }
         }
-        if(goingLeft){
-            transform.position = Vector3.MoveTowards(transform.position, point2.transform.position, moveSpeed *Time.deltaTime);
-        }
-        if(transform.position.x >= point1.transform.position.x-.1){
-            Debug.Log("hit right");
-            goingLeft = true;
-            goingRight = false;
-        }
-        if(transform.position.x <= point2.transform.position.x+.1){
-            Debug.Log("hit left");
-            goingRight = true;
-            goingLeft = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.GetComponent<Hook>() != null)
+        {
+            hooked = true;
         }
 
-        
+        if (other.gameObject.GetComponent<PlayerController>() != null)
+        {
+            Die(other.gameObject.GetComponent<PlayerController>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if (other.gameObject.GetComponent<Hook>() != null)
+        {
+            hooked = false;
+        }
+    }
+
+    private void Die(PlayerController player)
+    {
+        player.GrappleRelease();
+        Destroy(gameObject);
     }
 }

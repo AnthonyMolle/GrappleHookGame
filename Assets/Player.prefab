@@ -400,7 +400,9 @@ MonoBehaviour:
   grapplingMaterial: {fileID: 6200000, guid: 54153d5df4a53664caa3962141e54af0, type: 2}
   releasedMaterial: {fileID: 6200000, guid: 75da4a1985b30bf4282f3226c5f00c4e, type: 2}
   cam: {fileID: 0}
-  verticalPlayerSpeed: 0
+  grappleRange: 100
+  grappleReturnSpeed: 8
+  returnEpsilon: 1
   grappleSpeed: 1500
   reelSpeed: 8
   reelSpeedGrowth: 0

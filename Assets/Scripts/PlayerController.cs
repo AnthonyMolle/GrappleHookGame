@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject cameraConfiner;
     [SerializeField] TextMeshProUGUI heightText;
 
+    [SerializeField] GameObject bgParticles;
+
     [SerializeField] GameObject grapplePrefab;
 
     [SerializeField] PhysicsMaterial2D grapplingMaterial;
@@ -54,10 +56,13 @@ public class PlayerController : MonoBehaviour
 
     private GameObject currentGrapplePoint;
     private SpringJoint2D currentSpring;
+    private Collider2D grapplePointCollider;
 
     private void Start() 
     {
         grappleLine.positionCount = 2;
+
+        grapplePointCollider = grapplePoint.GetComponent<Collider2D>();
 
         greatestY = gameObject.transform.position.y;
         currentY = greatestY;
@@ -89,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (firingHook == false)
         {
+            grapplePointCollider.enabled = false;
+
             if (returning)
             {
                 if((gameObject.transform.position - grapplePoint.transform.position).magnitude < returnEpsilon)
@@ -108,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            grapplePointCollider.enabled = true;
             fireHeld = true;
             firingHook = true;
         }
@@ -227,5 +235,13 @@ public class PlayerController : MonoBehaviour
             Destroy(currentGrapplePoint);
             reelSFX.Stop();
         }
+    }
+
+    public void Die()
+    {
+        Destroy(indicator);
+        Destroy(grappleLine.gameObject);
+        Destroy(grapplePoint);
+        Destroy(gameObject);
     }
 }
