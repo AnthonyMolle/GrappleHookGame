@@ -19,15 +19,10 @@ public class MovementScript : MonoBehaviour
     void Start()
     {
         Vector3 distance = new Vector3(Mathf.Abs(point1.transform.position.x - point2.transform.position.x),Mathf.Abs(point1.transform.position.y - point2.transform.position.y),0.0f);
-        Debug.Log(distance + "move");
         Vector3 spawnPoint = new Vector3(point2.transform.position.x + distance.x * spawnValue, point2.transform.position.y + distance.y * spawnValue,0.0f);
         point1.transform.SetParent(null, true);
         point2.transform.SetParent(null, true);
         transform.position = spawnPoint;
-        
-        //transform.position = Vector3.MoveTowards(spawnPoint, point1.transform.position, moveSpeed *Time.deltaTime);
-        Debug.Log("spawnpoint" + spawnPoint);
-        Debug.Log(point1.transform.position-spawnPoint);
     }
 
     // Update is called once per frame
