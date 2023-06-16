@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] GameObject musicOffButton;
     private Settings settingsScript;
 
-    private void Start() 
+    private void Update() 
     {
         settingsScript = GetComponent<Settings>();
         //check to see if the music was previously toggled on or off
