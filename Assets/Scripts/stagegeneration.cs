@@ -27,7 +27,7 @@ public class stagegeneration : MonoBehaviour
     void Update()
     {
         if (player.transform.position.y >= blocks[1].transform.position.y - generationOffset) {
-            Destroy(blocks[0]);
+            //Destroy(blocks[0]);
             blocks[0] = blocks[1];
             blocks[1] = null;
             CreateBlock();
