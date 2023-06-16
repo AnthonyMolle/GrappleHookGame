@@ -1145,7 +1145,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Core Gameplay
+          m_StringArgument: Final Gameplay
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &978350483
@@ -2746,7 +2746,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 199.5
+      scalar: 8.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2799,7 +2799,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 2.21
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3299,7 +3299,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: -1, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.53, y: 0, z: 0.79}
+    m_Scale: {x: 0.53, y: 0, z: 0.01}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -3497,7 +3497,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 38.6
+      scalar: 553.1
       minScalar: 10
       maxCurve:
         serializedVersion: 2

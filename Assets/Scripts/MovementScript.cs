@@ -73,7 +73,10 @@ public class MovementScript : MonoBehaviour
 
     private void Die(PlayerController player)
     {
-        player.GrappleRelease();
+        if (player.grappling)
+        {
+            player.GrappleRelease();
+        }
         Destroy(gameObject);
     }
 }
