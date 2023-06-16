@@ -1,1 +1,1 @@
-{"musicPlaying":true,"highScore":15}
+{"musicPlaying":true,"highScore":24}
