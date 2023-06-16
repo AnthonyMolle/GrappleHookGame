@@ -16,6 +16,9 @@ public class MovementScript : MonoBehaviour
     private bool hooked = false;
     public bool paused = false;
 
+    [SerializeField] GameObject particlePrefab;
+    [SerializeField] GameObject audioPrefab;
+
     void Start()
     {
         Vector3 distance = new Vector3(Mathf.Abs(point1.transform.position.x - point2.transform.position.x),Mathf.Abs(point1.transform.position.y - point2.transform.position.y),0.0f);
@@ -73,7 +76,17 @@ public class MovementScript : MonoBehaviour
 
     private void Die(PlayerController player)
     {
-        player.GrappleRelease();
+        //FindObjectOfType<Pauser>().Pause(0.01f, 0.001f);
+
+        Instantiate(particlePrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(audioPrefab, gameObject.transform.position, gameObject.transform.rotation);
+
+        player.heightCounter += 10;
+
+        if (player.grappling)
+        {
+            player.GrappleRelease();
+        }
         Destroy(gameObject);
     }
 }

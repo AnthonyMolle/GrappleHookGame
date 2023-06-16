@@ -242,7 +242,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.09433961, b: 1, a: 0.22745098}
+  m_Color: {r: 0, g: 0.06925637, b: 0.735849, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -395,23 +395,30 @@ MonoBehaviour:
   grapplePoint: {fileID: 0}
   indicator: {fileID: 7266420539786729050}
   cameraConfiner: {fileID: 0}
+  spikePlatform: {fileID: 0}
+  spikeDistanceText: {fileID: 0}
   heightText: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  bgParticles: {fileID: 0}
   grapplePrefab: {fileID: 4740641641427754316, guid: 857fdd280903fc64a9c19cd7bbe2abdf, type: 3}
   grapplingMaterial: {fileID: 6200000, guid: 54153d5df4a53664caa3962141e54af0, type: 2}
   releasedMaterial: {fileID: 6200000, guid: 75da4a1985b30bf4282f3226c5f00c4e, type: 2}
   cam: {fileID: 0}
-  grappleRange: 100
-  grappleReturnSpeed: 8
-  returnEpsilon: 1
+  grappleRange: 9
+  grappleReturnSpeed: 0.3
+  returnEpsilon: 2
   grappleSpeed: 1500
-  reelSpeed: 8
-  reelSpeedGrowth: 0
-  maxReelSpeed: 13
-  distanceCutoff: 0.05
+  reelSpeed: 6
+  reelSpeedGrowth: 0.1
+  maxReelSpeed: 10
+  distanceCutoff: 0
   playerGravity: 1
   grappleDamping: 0.8
   grappleFrequency: 50
   grappleDistance: 0.1
+  grappling: 0
+  particlePrefab: {fileID: 8109796966088725265, guid: 9156cc7aa4fd57844b8c7f18199eaadb, type: 3}
+  audioPrefab: {fileID: 2289357431052420312, guid: 0d1a679348ed72b49aec8f930dddd94e, type: 3}
 --- !u!50 &7266420539619128988
 Rigidbody2D:
   serializedVersion: 4
@@ -448,7 +455,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.425
+  m_Radius: 0.31
 --- !u!82 &527097913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -558,16 +565,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPrefabs:
-  - {fileID: 1716324115590595917, guid: ebc4d6f2e5df04213bf5da68df1bcd33, type: 3}
-  - {fileID: 4525282542149619357, guid: d44614d28ccbe4b02a4eae47d0d94b52, type: 3}
-  - {fileID: 2486068701647671382, guid: fc4c2df31d0ba4ea380db8d3288d2c28, type: 3}
-  - {fileID: 1973321597749190976, guid: 1ba0f8f5b8ef64e05bdd05a8bb4a1fe8, type: 3}
-  - {fileID: 4506048771918049021, guid: e7207e57058c44010a6fc139d75dd784, type: 3}
-  - {fileID: 6754389393153821440, guid: 08989a729535d4d379b665fee37a6366, type: 3}
-  - {fileID: 3998648264528197982, guid: dca4ff2a677a04b21bf833cf9f908c3b, type: 3}
-  - {fileID: 539518483585368273, guid: 6607c084a373c42338434f69db1aefb3, type: 3}
-  - {fileID: 8167749922070877876, guid: c5b1b8d4bf1a94a7d9ff201750277e21, type: 3}
-  stageColor: {r: 0.6402825, g: 1, b: 0.21226418, a: 1}
+  - {fileID: 6244771368788409224, guid: b5204be61a1534db9a1c5b725d7ef263, type: 3}
+  - {fileID: 8591382088944811756, guid: 5ae054c445f9f41b7939629f6ad6dbd4, type: 3}
+  - {fileID: 3387097652384032820, guid: 30bdc6ccb806f4b3aa0fea2bc99008e7, type: 3}
+  - {fileID: 6484729275751855364, guid: 8fe7b9a7b4f524afb885e4391a629c99, type: 3}
+  - {fileID: 5646064337202873453, guid: d22d11e6f0923471fb0e1979902b578e, type: 3}
+  - {fileID: 1842359514621724783, guid: 926497bb112c348888187b1ba96a5936, type: 3}
+  - {fileID: 5731927207359411729, guid: 30a27ef04b9f84ccfa6ff52ad60d2698, type: 3}
+  - {fileID: 297636969715740646, guid: 0b2f60a0b3d8c4556aebdd741262d3f2, type: 3}
+  - {fileID: 8082596216783286027, guid: 301da9f7bd9f948c38992d7a1fa0c4a0, type: 3}
+  stageColor: {r: 0.6117647, g: 0.90196085, b: 0.26666668, a: 1}
   stageOffset: 11
   generationOffset: 2.5
   player: {fileID: 7266420539619128977}

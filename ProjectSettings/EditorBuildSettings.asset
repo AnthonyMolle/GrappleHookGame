@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Core Gameplay.unity
     guid: a0f7e93ce295ec04b9b1a49296a6beea
+  - enabled: 1
+    path: Assets/Scenes/StageDesigning.unity
+    guid: 9b2ed0e5de69b418b85d426099942eb8
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: c35c417cb6776f243b1b4c1389e60157
+  - enabled: 1
+    path: Assets/Scenes/Final Gameplay.unity
+    guid: e8aa3fde8136b0f4f8723b65dd335be5
   m_configObjects: {}

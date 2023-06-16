@@ -8941,6 +8941,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9825,7 +9826,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 44.52
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -12885,8 +12886,8 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -14095,6 +14096,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 0
   paused: 0
+  particlePrefab: {fileID: 0}
+  audioPrefab: {fileID: 0}
 --- !u!212 &1174200502
 SpriteRenderer:
   m_ObjectHideFlags: 0

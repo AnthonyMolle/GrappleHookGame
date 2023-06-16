@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject spikePlatform;
     [SerializeField] TextMeshProUGUI spikeDistanceText;
     [SerializeField] TextMeshProUGUI heightText;
+    [SerializeField] GameObject gameOverScreen;
 
     [SerializeField] GameObject bgParticles;
 
@@ -45,12 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private float currentY;
     private float greatestY;
-    private float heightCounter;
+    public float heightCounter;
 
     private bool fireHeld = false;
     private bool firingHook = false;
     private bool grappleReady = true;
-    private bool grappling = false;
+    public bool grappling = false;
     private bool returning = false;
 
     private Vector2 mousePosition;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     private Collider2D grapplePointCollider;
 
     private Settings settingsScript;
+    [SerializeField] GameObject particlePrefab;
+    [SerializeField] GameObject audioPrefab;
 
 
     private void Start() 
@@ -86,7 +89,7 @@ public class PlayerController : MonoBehaviour
             greatestY = currentY;
         }
 
-        heightText.text = (heightCounter * 3).ToString("F0");
+        heightText.text = (heightCounter * 5).ToString("F0");
         spikeDistanceText.text = (Vector2.Distance(gameObject.transform.position, spikePlatform.transform.position)).ToString("F2") + "m";
 
         grappleLine.SetPosition(0, transform.position);
@@ -99,15 +102,26 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
         indicator.transform.eulerAngles = new Vector3(0, 0, angle - 90);
 
+        if (Vector2.Distance(gameObject.transform.position, grapplePoint.gameObject.transform.position) > grappleRange)
+        {
+            if (!returning)
+            {
+                GrappleRelease();
+            }
+        }
+
         if (firingHook == false)
         {
             grapplePointCollider.enabled = false;
 
             if (returning)
             {
+                fireHeld = false;
+
                 if((gameObject.transform.position - grapplePoint.transform.position).magnitude < returnEpsilon)
                 {
                     returning = false;
+                    grappleReady = true;
                 }
                 else
                 {
@@ -116,15 +130,19 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                grappleReady = true;
                 grapplePoint.transform.position = gameObject.transform.position;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            grapplePointCollider.enabled = true;
-            fireHeld = true;
-            firingHook = true;
+            if (!returning)
+            {
+                grapplePointCollider.enabled = true;
+                fireHeld = true;
+                firingHook = true;
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -144,7 +162,6 @@ public class PlayerController : MonoBehaviour
             }
             fireHeld = false;
             firingHook = false; //temp
-            grappleReady = true; //temp
         }
 
         if (grappling)
@@ -183,6 +200,10 @@ public class PlayerController : MonoBehaviour
         {
             grapplePoint.GetComponent<Rigidbody2D>().AddForce(mouseDirection.normalized * grappleSpeed);
             grappleReady = false;
+        }
+        else if (fireHeld && returning)
+        {
+            grapplePoint.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         else if (fireHeld)
         {
@@ -234,6 +255,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.gravityScale = playerGravity;
         firingHook = false;
+        
         returning = true;
 
         if (currentSpring != null)
@@ -247,6 +269,10 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         settingsScript = GetComponent<Settings>();
+        Instantiate(particlePrefab, gameObject.transform.position, Quaternion.identity);
+        Instantiate(audioPrefab, transform.position, Quaternion.identity);
+
+        gameOverScreen.SetActive(true);
         Destroy(indicator);
         Destroy(grappleLine.gameObject);
         Destroy(grapplePoint);
