@@ -8941,6 +8941,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9825,7 +9826,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 44.52
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -12885,8 +12886,8 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -14095,6 +14096,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 0
   paused: 0
+  particlePrefab: {fileID: 0}
+  audioPrefab: {fileID: 0}
 --- !u!212 &1174200502
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14162,7 +14165,7 @@ Transform:
   - {fileID: 331372708}
   - {fileID: 1817855892}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269922582
 GameObject:
@@ -14334,7 +14337,7 @@ Transform:
   m_Children:
   - {fileID: 1269922584}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1769654887
 MonoBehaviour:
@@ -19789,6 +19792,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2097287874}
   dust: {fileID: 867451358}
+--- !u!114 &2097287878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097287872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb63fe4c52634b24d9e0af03dc869078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsText: {fileID: 0}
 --- !u!1 &2139690399
 GameObject:
   m_ObjectHideFlags: 0
@@ -19891,7 +19907,7 @@ Transform:
   - {fileID: 7040110812167842300}
   - {fileID: 3292053651430223895}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1405120962157585925
 TilemapRenderer:

@@ -742,6 +742,8 @@ GameObject:
   - component: {fileID: 368364966}
   - component: {fileID: 368364968}
   - component: {fileID: 368364967}
+  - component: {fileID: 368364970}
+  - component: {fileID: 368364969}
   m_Layer: 5
   m_Name: Game Over Screen
   m_TagString: Untagged
@@ -811,6 +813,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368364965}
   m_CullTransparentMesh: 1
+--- !u!114 &368364969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368364965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb63fe4c52634b24d9e0af03dc869078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsText: {fileID: 0}
+--- !u!114 &368364970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368364965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf4ca0dd4ba8c14b8af97b82e684cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightText: {fileID: 134468763}
+  player: {fileID: 527097904}
 --- !u!1 &429611758
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1005,10 @@ PrefabInstance:
       propertyPath: spikeDistanceText
       value: 
       objectReference: {fileID: 876181472}
+    - target: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+      propertyPath: gameOverHeightText
+      value: 
+      objectReference: {fileID: 1295592054}
     - target: {fileID: 7266420539619128979, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1022,12 +1055,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+--- !u!1 &527097904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7266420539619128977, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
+  m_PrefabInstance: {fileID: 527097903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &527097908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7266420539619128978, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
   m_PrefabInstance: {fileID: 527097903}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 527097904}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcc2dfaf875db754496d3982bfc3cfdb, type: 3}
@@ -1038,6 +1076,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7266420539619128979, guid: 9cc06f8976c1b46c999a0861fb35b36f, type: 3}
   m_PrefabInstance: {fileID: 527097903}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &527097910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527097904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb63fe4c52634b24d9e0af03dc869078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsText: {fileID: 0}
 --- !u!1001 &569639387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2036,7 +2087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SCORE: XXX'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
