@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private SpringJoint2D currentSpring;
     private Collider2D grapplePointCollider;
 
+    private Settings settingsScript;
     [SerializeField] GameObject particlePrefab;
     [SerializeField] GameObject audioPrefab;
 
@@ -266,6 +268,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        settingsScript = GetComponent<Settings>();
         Instantiate(particlePrefab, gameObject.transform.position, Quaternion.identity);
         Instantiate(audioPrefab, transform.position, Quaternion.identity);
 
@@ -274,5 +277,11 @@ public class PlayerController : MonoBehaviour
         Destroy(grappleLine.gameObject);
         Destroy(grapplePoint);
         Destroy(gameObject);
+        if(heightCounter*3 > settingsScript.settings.highScore){
+            settingsScript.settings.highScore=(int)heightCounter*3;
+            string output = JsonUtility.ToJson(settingsScript.settings);
+            File.WriteAllText(Application.dataPath + "/Scripts/settings.txt", output);
+        }
+
     }
 }

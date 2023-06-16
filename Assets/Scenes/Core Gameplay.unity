@@ -19792,6 +19792,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2097287874}
   dust: {fileID: 867451358}
+--- !u!114 &2097287878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097287872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb63fe4c52634b24d9e0af03dc869078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsText: {fileID: 0}
 --- !u!1 &2139690399
 GameObject:
   m_ObjectHideFlags: 0
