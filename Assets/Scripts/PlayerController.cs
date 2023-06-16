@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private float currentY;
     private float greatestY;
-    private float heightCounter;
+    public float heightCounter;
 
     private bool fireHeld = false;
     private bool firingHook = false;
@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     private GameObject currentGrapplePoint;
     private SpringJoint2D currentSpring;
     private Collider2D grapplePointCollider;
+
+    [SerializeField] GameObject particlePrefab;
+    [SerializeField] GameObject audioPrefab;
 
 
     private void Start() 
@@ -84,7 +87,7 @@ public class PlayerController : MonoBehaviour
             greatestY = currentY;
         }
 
-        heightText.text = (heightCounter * 3).ToString("F0");
+        heightText.text = (heightCounter * 5).ToString("F0");
         spikeDistanceText.text = (Vector2.Distance(gameObject.transform.position, spikePlatform.transform.position)).ToString("F2") + "m";
 
         grappleLine.SetPosition(0, transform.position);
@@ -263,6 +266,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        Instantiate(particlePrefab, gameObject.transform.position, Quaternion.identity);
+        Instantiate(audioPrefab, transform.position, Quaternion.identity);
+
         gameOverScreen.SetActive(true);
         Destroy(indicator);
         Destroy(grappleLine.gameObject);

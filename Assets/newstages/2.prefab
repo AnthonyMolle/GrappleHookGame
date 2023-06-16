@@ -948,7 +948,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 707fb16cbd95edc4db4b11208fe7613a, type: 3}
   m_Color: {r: 0.9333334, g: 0.19215688, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -978,6 +978,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 1
   paused: 0
+  particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097652831762961
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -995,7 +997,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1081,7 +1083,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 707fb16cbd95edc4db4b11208fe7613a, type: 3}
   m_Color: {r: 0.9333334, g: 0.19215688, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1111,6 +1113,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 1
   paused: 0
+  particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097652840757485
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1128,7 +1132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1276,7 +1280,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 707fb16cbd95edc4db4b11208fe7613a, type: 3}
   m_Color: {r: 0.9333334, g: 0.19215688, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1306,6 +1310,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 1
   paused: 0
+  particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653323282036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1323,7 +1329,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1471,7 +1477,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 707fb16cbd95edc4db4b11208fe7613a, type: 3}
   m_Color: {r: 0.9333334, g: 0.19215688, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1501,6 +1507,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 1
   paused: 0
+  particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653582787836
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1518,7 +1526,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1604,7 +1612,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 707fb16cbd95edc4db4b11208fe7613a, type: 3}
   m_Color: {r: 0.9333334, g: 0.19215688, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1634,6 +1642,8 @@ MonoBehaviour:
   goingRight: 1
   goingLeft: 1
   paused: 0
+  particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653825442005
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1651,7 +1661,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
