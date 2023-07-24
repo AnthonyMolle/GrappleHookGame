@@ -979,6 +979,7 @@ MonoBehaviour:
   goingLeft: 1
   paused: 0
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097652831762961
 BoxCollider2D:
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   goingLeft: 1
   paused: 0
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097652840757485
 BoxCollider2D:
@@ -1311,6 +1313,7 @@ MonoBehaviour:
   goingLeft: 1
   paused: 0
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653323282036
 BoxCollider2D:
@@ -1508,6 +1511,7 @@ MonoBehaviour:
   goingLeft: 1
   paused: 0
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653582787836
 BoxCollider2D:
@@ -1643,6 +1647,7 @@ MonoBehaviour:
   goingLeft: 1
   paused: 0
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &3387097653825442005
 BoxCollider2D:
@@ -3028,7 +3033,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1522
+    maxNumParticles: 12599
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -3096,7 +3101,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: -1, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.53, y: 0, z: 0.2}
+    m_Scale: {x: 1.06, y: 0, z: 0.2}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -3294,7 +3299,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 108.5
+      scalar: 632.29
       minScalar: 10
       maxCurve:
         serializedVersion: 2

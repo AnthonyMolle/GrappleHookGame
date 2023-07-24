@@ -7,22 +7,25 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] GameObject musicOnButton;
     [SerializeField] GameObject musicOffButton;
-    private Settings settingsScript;
+
+    [SerializeField] AudioSource music;
+    [SerializeField] float musicVolume;
 
     private void Update() 
     {
-        settingsScript = GetComponent<Settings>();
-        //check to see if the music was previously toggled on or off
         
-        if(settingsScript.settings.musicPlaying){
+        if(PlayerPrefs.GetInt("musictoggle", 1) == 1){
+            music.volume = musicVolume;
             if(musicOffButton.activeSelf){
+                
                 musicOffButton.SetActive(false);
                 musicOnButton.SetActive(true);
             }
             
         }
-        else{
+        else if (PlayerPrefs.GetInt("musictoggle", 1) == 0){
  
+           music.volume = 0;
            musicOffButton.SetActive(true);
            if(musicOnButton.activeSelf){
                 musicOffButton.SetActive(true);
@@ -39,18 +42,14 @@ public class MusicManager : MonoBehaviour
         if (musicOnButton.activeSelf == true)
         {
             
-            settingsScript.settings.musicPlaying = false;
-            string output = JsonUtility.ToJson(settingsScript.settings);
-            File.WriteAllText(Application.dataPath + "/Scripts/settings.txt", output);
+            PlayerPrefs.SetInt("musictoggle", 0);
             musicOnButton.SetActive(false);
             musicOffButton.SetActive(true);
         }
 
         else if (musicOffButton.activeSelf == true)
         {
-            settingsScript.settings.musicPlaying = true;
-            string output = JsonUtility.ToJson(settingsScript.settings);
-            File.WriteAllText(Application.dataPath + "/Scripts/settings.txt", output);
+            PlayerPrefs.SetInt("musictoggle", 1);
             musicOffButton.SetActive(false);
             musicOnButton.SetActive(true);
         }

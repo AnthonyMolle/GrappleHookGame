@@ -108,6 +108,7 @@ MonoBehaviour:
   goingLeft: 0
   paused: 1
   particlePrefab: {fileID: 8003263972768611774, guid: cb6a33a7edaf5db45bcaafbb9ac98b2f, type: 3}
+  particleScorePrefab: {fileID: 7629821242864385009, guid: a5008ddf62ac36345a3e3bf25890d9b9, type: 3}
   audioPrefab: {fileID: 94844248527216397, guid: eca3a81e30ba2fd429cfdfac75a21625, type: 3}
 --- !u!61 &354178627168468885
 BoxCollider2D:

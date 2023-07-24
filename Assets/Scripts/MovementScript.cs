@@ -17,6 +17,7 @@ public class MovementScript : MonoBehaviour
     public bool paused = false;
 
     [SerializeField] GameObject particlePrefab;
+    [SerializeField] GameObject particleScorePrefab;
     [SerializeField] GameObject audioPrefab;
 
     void Start()
@@ -77,13 +78,17 @@ public class MovementScript : MonoBehaviour
     private void Die(PlayerController player)
     {
         //FindObjectOfType<Pauser>().Pause(0.01f, 0.001f);
-
+        FindObjectOfType<Shaker>().Shake(0.2f, 3f);
         Instantiate(particlePrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(particleScorePrefab, gameObject.transform.position, gameObject.transform.rotation);
         Instantiate(audioPrefab, gameObject.transform.position, gameObject.transform.rotation);
 
         player.heightCounter += 10;
 
-        if (player.grappling)
+        
+        //player.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(player.gameObject.GetComponent<Rigidbody2D>().velocity.x / player.xDivide, player.boost);
+
+        if (hooked)
         {
             player.GrappleRelease();
         }

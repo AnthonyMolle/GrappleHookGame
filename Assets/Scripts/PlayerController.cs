@@ -7,6 +7,8 @@ using System.IO;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] AudioSource reelSFX;
+    [SerializeField] GameObject hitSFXPrefab;
+    [SerializeField] GameObject shootSFXPrefab;
 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Collider2D playerCollider;
@@ -44,6 +46,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float grappleDamping = 1;
     [SerializeField] float grappleFrequency = 1000000;
     [SerializeField] float grappleDistance;
+
+    public float boost = 10;
+    public float xDivide = 100;
+    public float maxSpeed = 15;
 
     private float currentY;
     private float greatestY;
@@ -140,6 +146,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!returning)
             {
+                FindObjectOfType<Shaker>().Shake(0.2f, 1f);
+                Instantiate(shootSFXPrefab, transform.position, transform.rotation);
                 grapplePointCollider.enabled = true;
                 fireHeld = true;
                 firingHook = true;
@@ -222,6 +230,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!grappling)
         {
+            FindObjectOfType<Shaker>().Shake(0.2f, 1f);
+            Instantiate(hitSFXPrefab, transform.position, transform.rotation);
             grappling = true;
 
             currentSpring = gameObject.AddComponent<SpringJoint2D>();
@@ -269,9 +279,10 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        settingsScript = GetComponent<Settings>();
         Instantiate(particlePrefab, gameObject.transform.position, Quaternion.identity);
         Instantiate(audioPrefab, transform.position, Quaternion.identity);
+
+        FindObjectOfType<Shaker>().Shake(0.5f, 5f);
 
         gameOverScreen.SetActive(true);
         Destroy(indicator);
@@ -279,10 +290,8 @@ public class PlayerController : MonoBehaviour
         Destroy(grapplePoint);
         Destroy(gameObject);
         gameOverHeightText.text = ((int)(heightCounter*5)).ToString();
-        if(heightCounter*5 > settingsScript.settings.highScore){
-            settingsScript.settings.highScore=(int)(heightCounter*5);
-            string output = JsonUtility.ToJson(settingsScript.settings);
-            File.WriteAllText(Application.dataPath + "/Scripts/settings.txt", output);
+        if(heightCounter * 5 > PlayerPrefs.GetInt("hiscore", 0)){
+            PlayerPrefs.SetInt("hiscore", ((int)(heightCounter * 5)));
         }
 
     }

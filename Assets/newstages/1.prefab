@@ -1697,7 +1697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9081230234147643712}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0076974034, y: -4.22, z: -0.097454965}
+  m_LocalPosition: {x: 0.0076974034, y: -5.57, z: -0.097454965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2272,7 +2272,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1522
+    maxNumParticles: 12599
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -2340,7 +2340,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: -1, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.53, y: 0, z: 0.2}
+    m_Scale: {x: 1.06, y: 0, z: 0.2}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -2538,7 +2538,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 108.5
+      scalar: 632.29
       minScalar: 10
       maxCurve:
         serializedVersion: 2

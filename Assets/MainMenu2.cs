@@ -6,7 +6,6 @@ using System.IO;
 
 public class MainMenu2 : MonoBehaviour
 {
-    private Settings settingsScript;
     [SerializeField] TextMeshProUGUI heightText;
     // Start is called before the first frame update
     void Start()
@@ -17,8 +16,6 @@ public class MainMenu2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        settingsScript = GetComponent<Settings>();
-        heightText.text = settingsScript.settings.highScore.ToString();
-        Debug.Log(heightText.text);
+        heightText.text = PlayerPrefs.GetInt("hiscore", 0).ToString("F0");
     }
 }
