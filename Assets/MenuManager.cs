@@ -18,4 +18,9 @@ public class MenuManager : MonoBehaviour
         tutorialMenu.SetActive(true);
         creditsMenu.SetActive(false);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
